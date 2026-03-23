@@ -1,0 +1,2 @@
+make object for gameboard, gameScoreboard,controlflow,player
+function to check winning conditons, for console and textContent
