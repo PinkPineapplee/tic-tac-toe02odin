@@ -5,6 +5,11 @@ gameboard object
 contains gameboard array
 
 player object
-player x
-player 0
+player marker=x
+player marker=0
+playerone name
+playertwo name
 
+switchturn
+
+if x is 
