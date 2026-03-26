@@ -1,2 +1,10 @@
 make object for gameboard, gameScoreboard,controlflow,player
 function to check winning conditons, for console and textContent
+
+gameboard object 
+contains gameboard array
+
+player object
+player x
+player 0
+
