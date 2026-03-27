@@ -17,4 +17,8 @@ game = {
    this.name=name;
    this.marker=marker;
    this.score = 0;
- }
+ };
+
+ const playerOne = new Player(prompt("what is your name"), "X");
+ const playerTwo = new Player(prompt("what is your name?", "O"));
+
