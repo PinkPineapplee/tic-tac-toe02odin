@@ -22,3 +22,6 @@ game = {
  const playerOne = new Player(prompt("what is your name"), "X");
  const playerTwo = new Player(prompt("what is your name?", "O"));
 
+function playGame(){
+  game.start = true;
+}
