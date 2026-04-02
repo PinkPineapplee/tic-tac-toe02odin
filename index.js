@@ -13,14 +13,14 @@ game = {
   turn: playerOne.marker
 };
 
- function Player(name,marker){
-   this.name=name;
+ function Player(id,marker){
+   this.id=id;
    this.marker=marker;
    this.score = 0;
  };
 
- const playerOne = new Player(prompt("what is your name"), "X");
- const playerTwo = new Player(prompt("what is your name?", "O"));
+ const playerOne = new Player(1, "X");
+ const playerTwo = new Player(2, "O");
 
 function playGame(){
   game.start = true;
