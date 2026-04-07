@@ -1,15 +1,26 @@
-make object for gameboard, gameScoreboard,controlflow,player
-function to check winning conditons, for console and textContent
+set prompt variable to stor node js. parsing
+set boxes to call DOM of .box element
+set startBtn to call DOM. button
 
-gameboard object 
-contains gameboard array
+make game object
+  board stores an empty array for nine spaces
+  active property to set game to deactive
+  currentPlayer to store current playing player.marker.
+  printboard method to print board on console.
+  displayBoard method to display game in the DOM.
 
-player object
-player marker=x
-player marker=0
-playerone name
-playertwo name
 
-switchturn
+make a Player constructor
+  this. id
+  this. marker
+  this. score
 
-if x is 
+make new player objects for player ONe and player playerTwo
+
+make function to playGame.
+  set game.active to activate.
+
+
+
+
+When the start btn is clicked. playGAme for one instance/round.  

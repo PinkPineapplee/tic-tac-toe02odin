@@ -20,8 +20,10 @@ const game = {
                     ---------
                     ${game.board[6]} | ${game.board[7]} | ${game.board[8]}
                   `)
+  },
+  displayBoard: function(){
+
   }
-  
 };
 
  function Player(id,marker){
@@ -34,11 +36,8 @@ const game = {
  const playerTwo = new Player(2, "O");
 
 
- //make game controlflow
-const controlFlow = {
-  
-}
+ 
 function playGame(){
-  game.start = true;
+  game.active = true;
 }
 
