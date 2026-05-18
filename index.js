@@ -24,6 +24,8 @@ const game = {
   displayBoard: function(){
 
   }
+
+  
 };
 
  function Player(id,marker){
@@ -37,7 +39,7 @@ const game = {
 
 
  
-function playGame(){
+function playGame(turn, one, two){
   game.active = true;
 }
 
