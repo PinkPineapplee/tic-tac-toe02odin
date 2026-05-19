@@ -25,7 +25,7 @@ const game = {
 
   }
 
-  
+
 };
 
  function Player(id,marker){
@@ -40,6 +40,7 @@ const game = {
 
  
 function playGame(turn, one, two){
+  
   game.active = true;
 }
 
