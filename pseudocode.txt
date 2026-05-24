@@ -8,6 +8,7 @@ make game object
   currentPlayer to store current playing player.marker.
   printboard method to print board on console.
   displayBoard method to display game in the DOM.
+  switch turns
 
 
 make a Player constructor
@@ -20,7 +21,8 @@ make new player objects for player ONe and player playerTwo
 make function to playGame.
   set game.active to activate.
 
-
+make function for winning conditions
+  display winner message
 
 
 When the start btn is clicked. playGAme for one instance/round.  
