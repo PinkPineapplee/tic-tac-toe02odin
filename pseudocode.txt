@@ -24,5 +24,10 @@ make function to playGame.
 make function for winning conditions
   display winner message
 
+build console first.
+take of ui design
+
+
+
 
 When the start btn is clicked. playGAme for one instance/round.  
