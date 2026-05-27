@@ -3,6 +3,8 @@ const boxes = document.querySelectorAll(".box");
 const startBtn = document.querySelector("button");
 
 
+console.log("Game Start!!!");
+console.log("PlayerX what will it be today.");
 
 const game = {
   board : [null,null,null,
@@ -19,18 +21,15 @@ const game = {
                     ${game.board[3]} | ${game.board[4]} | ${game.board[5]}
                     ---------
                     ${game.board[6]} | ${game.board[7]} | ${game.board[8]}
-                  `)
-  },
-  displayBoard: function(){
-
+                  `);
   }
-
-
+  
 };
+console.log(game.printBoard());
 
  function Player(id,marker){
-   this.id=id;
-   this.marker=marker;
+   this.id = id;
+   this.marker = marker;
    this.score = 0;
  };
 
@@ -40,7 +39,6 @@ const game = {
 
  
 function playGame(turn, one, two){
-  
   game.active = true;
 }
 
