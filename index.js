@@ -28,7 +28,9 @@ const game = {
   },
 
   switchTurn: function(currentTurn){
-                 currentTurn === "X" ? "O":"X"}
+                 currentTurn === "X" ? "O":"X";
+                         console.log("The current player is ", currentTurn)}
+                 
   
   
 };

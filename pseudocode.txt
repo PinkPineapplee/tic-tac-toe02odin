@@ -20,6 +20,8 @@ make new player objects for player ONe and player playerTwo
 
 make function to playGame.
   set game.active to activate.
+  push player.maker into empty slot
+  switchturn()
 
 make function for winning conditions
   display winner message
