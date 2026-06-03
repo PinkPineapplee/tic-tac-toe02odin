@@ -4,7 +4,7 @@ const startBtn = document.querySelector("button");
 
 
 console.log("Game Start!!!");
-console.log("PlayerX what will it be today.");
+
 
 const game = {
 
@@ -59,7 +59,8 @@ console.log(game.printBoard);
 
 
  
-function playGame(turn){
+function playGame(turn, one, two){
+
    // set game.active to activate.
   game.active = true;
   
@@ -74,7 +75,7 @@ function playGame(turn){
   game.switchTurn(currentPlayer)
  // gameOver()
  game.isGameOver()
-}playGame(game.currentPlayer)
+}playGame(game.currentPlayer, playerOne.marker, playerTwo.marker)
 
 const scoreBoard = {
   printScoreboard : console.log(` Player One | Player Two , \n
@@ -88,8 +89,8 @@ function reset(){
   game.board = [null,null,null,
                 null,null,null,
                 null,null,null];
-   playerOne.score=0;
-   playerTwo.score=0;
-                
+   playerOne.score = 0;
+   playerTwo.score = 0;
+
 
 }
