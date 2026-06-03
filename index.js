@@ -32,7 +32,8 @@ const game = {
                          console.log("The current player is ", currentTurn)},
 
   checkWin: function(){
-                  
+             let winner = true;
+
   },
   isGameOver: function(){
     if(this.board !== null){
@@ -66,9 +67,17 @@ function playGame(turn){
   console.log("choose a number from 0 to 8.");
 
  // printboard()
+ game.printBoard()
   //checkwin()
+  game.checkWin()
   //switchturn()
+  game.switchTurn()
  // gameOver()
+ game.isGameOver()
 }
 
-
+const scoreBoard = {
+  printScoreboard : console.log(` Player One | Player Two , \n
+                ${playerOne.score} | ${playerTwo.score}
+    `)
+}
