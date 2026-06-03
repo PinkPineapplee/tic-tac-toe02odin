@@ -31,8 +31,8 @@ const game = {
                  currentTurn === "X" ? "O":"X";
                          console.log("The current player is ", currentTurn)},
 
-  checkWin: function(){
-             let winner = true;
+  checkWin: function(array){
+             let winner = false;
 
   },
   isGameOver: function(){
@@ -69,9 +69,9 @@ function playGame(turn){
  // printboard()
  game.printBoard()
   //checkwin()
-  game.checkWin()
+  game.checkWin(game.board)
   //switchturn()
-  game.switchTurn()
+  game.switchTurn(currentPlayer)
  // gameOver()
  game.isGameOver()
 }playGame(game.currentPlayer)
@@ -85,5 +85,11 @@ const scoreBoard = {
 
 function reset(){
   game.active = false;
-  
+  game.board = [null,null,null,
+                null,null,null,
+                null,null,null];
+   playerOne.score=0;
+   playerTwo.score=0;
+                
+
 }
