@@ -29,11 +29,22 @@ const game = {
 
   switchTurn: function(currentTurn){
                  currentTurn === "X" ? "O":"X";
-                         console.log("The current player is ", currentTurn)}
+                         console.log("The current player is ", currentTurn)},
+
+  checkWin: function(){
+                  
+  },
+  isGameOver: function(){
+    if(this.board !== null){
+      console.log("gameOver")
+      reset()}
+      else{
+        playGame(this.switchTurn)
+      }
+  }
                  
-  
-  
-};
+
+ };
 console.log(game.printBoard);
 
  function Player(id,marker){
@@ -41,14 +52,23 @@ console.log(game.printBoard);
    this.marker = marker;
    this.score = 0;
  };
-
+  
  const playerOne = new Player(1, "X");
  const playerTwo = new Player(2, "O");
 
 
  
-function playGame(turn, one, two){
+function playGame(turn){
+   // set game.active to activate.
   game.active = true;
+  
+  //push player.maker into empty slot
+  console.log("choose a number from 0 to 8.");
+
+ // printboard()
+  //checkwin()
+  //switchturn()
+ // gameOver()
 }
 
 
