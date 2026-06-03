@@ -21,7 +21,11 @@ make new player objects for player ONe and player playerTwo
 make function to playGame.
   set game.active to activate.
   push player.maker into empty slot
+  printboard()
+  checkwin()
   switchturn()
+  gameOver()
+  
 
 make function for winning conditions
   display winner message
@@ -29,6 +33,7 @@ make function for winning conditions
 build console first.
 take of ui design
 
+make function to reset game
 
 
 
