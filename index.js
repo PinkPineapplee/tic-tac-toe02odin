@@ -70,8 +70,9 @@ function playGame(turn, one, two){
   const userInput = Number(prompt("choose a number from 0 to 8."))
    console.log(userInput);
 
-   game.board[userInput] = currentPlayer
-  }
+   game.board[userInput] = currentPlayer;
+    return game.printBoard();
+  }play();
   
 
  // printboard()
