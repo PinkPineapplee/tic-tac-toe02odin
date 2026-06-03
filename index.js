@@ -74,10 +74,16 @@ function playGame(turn){
   game.switchTurn()
  // gameOver()
  game.isGameOver()
-}
+}playGame(game.currentPlayer)
 
 const scoreBoard = {
   printScoreboard : console.log(` Player One | Player Two , \n
                 ${playerOne.score} | ${playerTwo.score}
     `)
+}
+
+
+function reset(){
+  game.active = false;
+  
 }
