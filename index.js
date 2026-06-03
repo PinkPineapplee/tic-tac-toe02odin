@@ -67,8 +67,10 @@ function playGame(turn, one, two){
   function play(){
   //push player.maker into empty slot
   
-  const userInput = prompt("choose a number from 0 to 8.")
+  const userInput = Number(prompt("choose a number from 0 to 8."))
    console.log(userInput);
+
+   game.board[userInput] = currentPlayer
   }
   
 
