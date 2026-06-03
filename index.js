@@ -1,4 +1,4 @@
-const prompt = require("prompt-sync")();
+
 const boxes = document.querySelectorAll(".box");
 const startBtn = document.querySelector("button");
 
@@ -7,12 +7,15 @@ console.log("Game Start!!!");
 console.log("PlayerX what will it be today.");
 
 const game = {
+
+  active : false,
+  currentPlayer: playerOne.marker,
+
   board : [null,null,null,
            null,null,null,
            null,null,null],
 
-  active : false,
-  currentPlayer: playerOne.marker,
+ 
 
   printBoard: function(){
                 console.log(`
@@ -22,10 +25,14 @@ const game = {
                     ---------
                     ${game.board[6]} | ${game.board[7]} | ${game.board[8]}
                   `);
-  }
+  },
+
+  switchTurn: function(currentTurn){
+                 currentTurn === "X" ? "O":"X"}
+  
   
 };
-console.log(game.printBoard());
+console.log(game.printBoard);
 
  function Player(id,marker){
    this.id = id;
@@ -41,4 +48,5 @@ console.log(game.printBoard());
 function playGame(turn, one, two){
   game.active = true;
 }
+
 
