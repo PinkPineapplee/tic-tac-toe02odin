@@ -63,9 +63,14 @@ function playGame(turn, one, two){
 
    // set game.active to activate.
   game.active = true;
-  
+   
+  function play(){
   //push player.maker into empty slot
-  console.log("choose a number from 0 to 8.");
+  
+  const userInput = prompt("choose a number from 0 to 8.")
+   console.log(userInput);
+  }
+  
 
  // printboard()
  game.printBoard()
