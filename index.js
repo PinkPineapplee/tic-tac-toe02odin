@@ -81,6 +81,7 @@ const game = {
          }   
   return winner;
   },
+
   isGameOver: function(){
    
       console.log("gameOver")
@@ -89,7 +90,7 @@ const game = {
   }
                  
 
- };
+ }
 console.log(game.printBoard);
 
  
@@ -116,7 +117,7 @@ function playGame(turn){
   game.switchTurn(turn)
  // gameOver()
  game.isGameOver()
-}
+}playGame(game.currentPlayer)
 
 const scoreBoard = {
   print : console.log(` Player One | Player Two , \n
