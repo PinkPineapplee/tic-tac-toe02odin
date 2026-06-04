@@ -72,11 +72,8 @@ function playGame(turn, one, two){
 
    game.board[userInput] = currentPlayer;
     return game.printBoard();
-  }play();
+  }play()
   
-
- // printboard()
- game.printBoard()
   //checkwin()
   game.checkWin(game.board)
   //switchturn()
