@@ -33,26 +33,26 @@ const game = {
                          console.log("The current player is ", currentTurn)},
 
   checkWin: function(array){
-      if((game.board[0] === "X" && game.board[1] === "X" && game.board[2] === "X") ||
-         (game.board[3] === "X" && game.board[4] === "X" && game.board[5] === "X") ||
-         (game.board[6] === "X" && game.board[7] === "X" && game.board[8] === "X") ||
-         (game.board[0] === "X" && game.board[3] === "X" && game.board[6] === "X") ||
-         (game.board[1] === "X" && game.board[4] === "X" && game.board[7] === "X") ||
-         (game.board[2] === "X" && game.board[5] === "X" && game.board[8] === "X") ||
-         (game.board[0] === "X" && game.board[4] === "X" && game.board[8] === "X") ||
-         (game.board[2] === "X" && game.board[4] === "X" && game.board[4] === "X")){
+      if((array[0] === "X" && array[1] === "X" && array[2] === "X") ||
+         (array[3] === "X" && array[4] === "X" && array[5] === "X") ||
+         (array[6] === "X" && array[7] === "X" && array[8] === "X") ||
+         (array[0] === "X" && array[3] === "X" && array[6] === "X") ||
+         (array[1] === "X" && array[4] === "X" && array[7] === "X") ||
+         (array[2] === "X" && array[5] === "X" && array[8] === "X") ||
+         (array[0] === "X" && array[4] === "X" && array[8] === "X") ||
+         (array[2] === "X" && array[4] === "X" && array[4] === "X")){
 
           winner = "X"
          }
          else if (
-         (game.board[0] === "O" && game.board[1] === "O" && game.board[2] === "O") ||
-         (game.board[3] === "O" && game.board[4] === "O" && game.board[5] === "O") ||
-         (game.board[6] === "O" && game.board[7] === "O" && game.board[8] === "O") ||
-         (game.board[0] === "O" && game.board[3] === "O" && game.board[6] === "O") ||
-         (game.board[1] === "O" && game.board[4] === "O" && game.board[7] === "O") ||
-         (game.board[2] === "O" && game.board[5] === "O" && game.board[8] === "O") ||
-         (game.board[0] === "O" && game.board[4] === "O" && game.board[8] === "O") ||
-         (game.board[2] === "O" && game.board[4] === "O" && game.board[4] === "O")){
+         (array[0] === "O" && array[1] === "O" && array[2] === "O") ||
+         (array[3] === "O" && array[4] === "O" && array[5] === "O") ||
+         (array[6] === "O" && array[7] === "O" && array[8] === "O") ||
+         (array[0] === "O" && array[3] === "O" && array[6] === "O") ||
+         (array[1] === "O" && array[4] === "O" && array[7] === "O") ||
+         (array[2] === "O" && array[5] === "O" && array[8] === "O") ||
+         (array[0] === "O" && array[4] === "O" && array[8] === "O") ||
+         (array[2] === "O" && array[4] === "O" && array[4] === "O")){
 
           winner = "O"
          }
