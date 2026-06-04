@@ -58,7 +58,13 @@ const game = {
          }
          else{
           let tie = false;
-          //array.find( null) =>{ array === null console.log("play") "Nobody wins this round")}
+          const findNull = array.find((element) => {
+            if ( element === null){
+               playGame()
+            } else{
+              console.log("nobody wins this round")
+            }
+          });
          }   
   return winner;
   },
