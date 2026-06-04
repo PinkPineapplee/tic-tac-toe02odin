@@ -75,19 +75,17 @@ const game = {
                playGame()
             } else{
               console.log("nobody wins this round");
-              reset();
+              this.isGameOver();
             }
           });
          }   
   return winner;
   },
   isGameOver: function(){
-    if(this.board !== null){
+   
       console.log("gameOver")
-      reset()}
-      else{
-        playGame(this.switchTurn)
-      }
+      reset()
+      
   }
                  
 
