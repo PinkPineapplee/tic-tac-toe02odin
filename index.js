@@ -10,6 +10,7 @@ const game = {
 
   active : false,
   currentPlayer: playerOne.marker,
+  winner: false,
 
   board : [null,null,null,
            null,null,null,
@@ -32,8 +33,18 @@ const game = {
                          console.log("The current player is ", currentTurn)},
 
   checkWin: function(array){
-             let winner = false;
-
+    let conditions = [
+                      [1,2,3],
+                      [4,5,6],
+                      [7,8,9],
+                      [1,4,7],
+                      [2,5,8],
+                      [3,6,9],
+                      [1,5,9],
+                      [3,5,7]
+                    ]
+            
+  return winner = true;
   },
   isGameOver: function(){
     if(this.board !== null){
