@@ -64,7 +64,8 @@ const game = {
             if ( element === null){
                playGame()
             } else{
-              console.log("nobody wins this round")
+              console.log("nobody wins this round");
+              reset();
             }
           });
          }   
