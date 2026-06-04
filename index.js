@@ -10,7 +10,7 @@ const game = {
 
   active : false,
   currentPlayer: playerOne.marker,
-  winner: false,
+  winner: "",
 
   board : [null,null,null,
            null,null,null,
@@ -33,18 +33,34 @@ const game = {
                          console.log("The current player is ", currentTurn)},
 
   checkWin: function(array){
-    let conditions = [
-                      [1,2,3],
-                      [4,5,6],
-                      [7,8,9],
-                      [1,4,7],
-                      [2,5,8],
-                      [3,6,9],
-                      [1,5,9],
-                      [3,5,7]
-                    ]
-            
-  return winner = true;
+      if((game.board[0] === "X" && game.board[1] === "X" && game.board[2] === "X") ||
+         (game.board[3] === "X" && game.board[4] === "X" && game.board[5] === "X") ||
+         (game.board[6] === "X" && game.board[7] === "X" && game.board[8] === "X") ||
+         (game.board[0] === "X" && game.board[3] === "X" && game.board[6] === "X") ||
+         (game.board[1] === "X" && game.board[4] === "X" && game.board[7] === "X") ||
+         (game.board[2] === "X" && game.board[5] === "X" && game.board[8] === "X") ||
+         (game.board[0] === "X" && game.board[4] === "X" && game.board[8] === "X") ||
+         (game.board[2] === "X" && game.board[4] === "X" && game.board[4] === "X")){
+
+          winner = "X"
+         }
+         else if (
+         (game.board[0] === "O" && game.board[1] === "O" && game.board[2] === "O") ||
+         (game.board[3] === "O" && game.board[4] === "O" && game.board[5] === "O") ||
+         (game.board[6] === "O" && game.board[7] === "O" && game.board[8] === "O") ||
+         (game.board[0] === "O" && game.board[3] === "O" && game.board[6] === "O") ||
+         (game.board[1] === "O" && game.board[4] === "O" && game.board[7] === "O") ||
+         (game.board[2] === "O" && game.board[5] === "O" && game.board[8] === "O") ||
+         (game.board[0] === "O" && game.board[4] === "O" && game.board[8] === "O") ||
+         (game.board[2] === "O" && game.board[4] === "O" && game.board[4] === "O")){
+
+          winner = "O"
+         }
+         else{
+          let tie = false;
+          //array.find( null) =>{ array === null console.log("play") "Nobody wins this round")}
+         }   
+  return winner;
   },
   isGameOver: function(){
     if(this.board !== null){
