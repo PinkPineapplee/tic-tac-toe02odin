@@ -118,7 +118,7 @@ function playGame(turn, one, two){
 }playGame(game.currentPlayer, playerOne.marker, playerTwo.marker)
 
 const scoreBoard = {
-  printScoreboard : console.log(` Player One | Player Two , \n
+  print : console.log(` Player One | Player Two , \n
                 ${playerOne.score} | ${playerTwo.score}
     `)
 }
@@ -132,5 +132,17 @@ function reset(){
    playerOne.score = 0;
    playerTwo.score = 0;
 
-
 }
+
+ function updateScoreBoard(){
+  let win = game.checkWin;
+  if(win === "X"){ 
+    playerOne.score++ 
+    scoreBoard.print;
+  }else if (win = "O"){
+    playerTwo.score++
+    scoreBoard.print;
+  }
+
+  
+ }
