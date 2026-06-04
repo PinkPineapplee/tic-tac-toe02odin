@@ -5,6 +5,16 @@ const startBtn = document.querySelector("button");
 
 console.log("Game Start!!!");
 
+function Player(id,marker){
+   this.id = id;
+   this.marker = marker;
+   this.score = 0;
+ };
+  
+ const playerOne = new Player(1, "X");
+ const playerTwo = new Player(2, "O");
+
+
 
 const game = {
 
@@ -84,18 +94,10 @@ const game = {
  };
 console.log(game.printBoard);
 
- function Player(id,marker){
-   this.id = id;
-   this.marker = marker;
-   this.score = 0;
- };
-  
- const playerOne = new Player(1, "X");
- const playerTwo = new Player(2, "O");
-
+ 
 
  
-function playGame(turn, one, two){
+function playGame(turn){
 
    // set game.active to activate.
   game.active = true;
@@ -106,17 +108,17 @@ function playGame(turn, one, two){
   const userInput = Number(prompt("choose a number from 0 to 8."))
    console.log(userInput);
 
-   game.board[userInput] = currentPlayer;
+   game.board[userInput] = turn;
     return game.printBoard();
   }play()
   
   //checkwin()
   game.checkWin(game.board)
   //switchturn()
-  game.switchTurn(currentPlayer)
+  game.switchTurn(turn)
  // gameOver()
  game.isGameOver()
-}playGame(game.currentPlayer, playerOne.marker, playerTwo.marker)
+}
 
 const scoreBoard = {
   print : console.log(` Player One | Player Two , \n
