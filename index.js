@@ -42,7 +42,8 @@ const game = {
          (array[0] === "X" && array[4] === "X" && array[8] === "X") ||
          (array[2] === "X" && array[4] === "X" && array[4] === "X")){
 
-          winner = "X"
+          winner = "X";
+          console.log("player One wins this round")
          }
          else if (
          (array[0] === "O" && array[1] === "O" && array[2] === "O") ||
@@ -54,7 +55,8 @@ const game = {
          (array[0] === "O" && array[4] === "O" && array[8] === "O") ||
          (array[2] === "O" && array[4] === "O" && array[4] === "O")){
 
-          winner = "O"
+          winner = "O";
+          console.log("player two wins this round")
          }
          else{
           let tie = false;
