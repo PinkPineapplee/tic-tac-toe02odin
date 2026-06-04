@@ -101,15 +101,12 @@ function playGame(turn){
    // set game.active to activate.
   game.active = true;
    
-  function play(){
+  function play(userInput){
   //push player.maker into empty slot
-  
-  const userInput = Number(prompt("choose a number from 0 to 8."))
-   console.log(userInput);
-
+  console.log("pick a number from 0 to 8" , userInput);
    game.board[userInput] = turn;
     return game.printBoard();
-  }play()
+  }
   
   //checkwin()
   game.checkWin(game.board)
