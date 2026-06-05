@@ -100,23 +100,21 @@ function playGame(turn, userInput){
 
    // set game.active to activate.
   game.active = true;
-   
- 
 
-        //push player.maker into empty slot
-        console.log("pick a number from 0 to 8" , userInput);
-        game.board[userInput] = turn;
+  //push player.maker into empty slot
+  console.log("pick a number from 0 to 8" , userInput);
+  game.board[userInput] = turn;
 
-        //checkwin()
-        game.checkWin(game.board);
+  //checkwin()
+  game.checkWin(game.board);
 
-        //switchturn()
-        game.switchTurn(turn);
+  //switchturn()
+  game.switchTurn(turn);
 
-        // gameOver()
-        game.isGameOver();
+  // gameOver()
+  game.isGameOver();
 
-          return game.printBoard();
+    return game.printBoard();
  
    
 }
@@ -142,9 +140,9 @@ function reset(){
   let win = game.checkWin;
   if(win === "X"){ 
     playerOne.score++ 
-    scoreBoard.print;
+    
   }else if (win = "O"){
     playerTwo.score++
-    scoreBoard.print;
+    
   }
  }
