@@ -39,7 +39,7 @@ const game = {
   },
 
   switchTurn: function(currentTurn){
-                 currentTurn === "X" ? "O":"X";
+                 currentTurn === playerOne.marker ? playerTwo.marker:playerOne.marker;
                          console.log("The current player is ", currentTurn)},
 
   checkWin: function(array){
