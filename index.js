@@ -72,7 +72,7 @@ const game = {
           let tie = false;
           const findNull = array.find((element) => {
             if ( element === null){
-               playGame()
+               console.log(` player ${this.currentPlayer}` + ",what will you play next")
             } else{
               console.log("nobody wins this round");
               this.isGameOver();
