@@ -96,29 +96,33 @@ game.printBoard();
  
 
  
-function playGame(turn){
+function playGame(turn, userInput){
 
    // set game.active to activate.
   game.active = true;
    
-  function play(userInput){
-  //push player.maker into empty slot
-  console.log("pick a number from 0 to 8" , userInput);
-   game.board[userInput] = turn;
-    return game.printBoard();
+  function play(){
+
+        //push player.maker into empty slot
+        console.log("pick a number from 0 to 8" , userInput);
+        game.board[userInput] = turn;
+        //checkwin()
+        game.checkWin(game.board);
+        //switchturn()
+        game.switchTurn(turn);
+        // gameOver()
+      game.isGameOver()
+          return game.printBoard();
   }
   
-  //checkwin()
-  game.checkWin(game.board)
-  //switchturn()
-  game.switchTurn(turn)
- // gameOver()
- game.isGameOver()
-}playGame(game.currentPlayer)
+  
+  
+ 
+}
 
 const scoreBoard = {
-  print : console.log(` Player One | Player Two , \n
-                ${playerOne.score} | ${playerTwo.score}
+  print : console.log(` Player One | Player Two  \n
+  ${playerOne.score}        |        ${playerTwo.score}
     `)
 }
 
