@@ -2,13 +2,12 @@
 const boxes = document.querySelectorAll(".box");
 const startBtn = document.querySelector("button");
 
- //make table
+ //make UI board
 const container= document.querySelector(".container");
 for (let i = 1; i <= 9; i++){
   const div = document.createElement("div");
   div.className = "box";
   container.appendChild(div);
- 
 }
 
 console.log("Game Start!!!");
