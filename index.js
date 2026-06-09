@@ -74,19 +74,22 @@ const game = {
 
             if ( findNull === null){
              
-               console.log("The game progress ...")
-               return findNull
+               console.log("game is in progress ...")
+              //switchturn()
+              this.switchTurn(game.currentPlayer);
             } else{
               console.log("All the game slots are full! it is a tie.");
-            
+            // gameOver()
+              this.isGameOver();
             }
+            winner = "null";
           };
             
   return winner;
   },
 
-  isGameOver: function(){
-   
+  isGameOver: function(nul){
+    
       console.log("gameOver!!!")
       reset();
       
@@ -106,19 +109,22 @@ function playGame(turn, userInput){
 
   //push player.maker into empty slot
   console.log("pick a number from 0 to 8" , userInput);
-  game.board[userInput] = turn;
+   //write a condition to not overwrite values on the second round of game.
+   if (game.board[userInput] === null){
+    game.board[userInput] = turn;
+   }else{
+    console.log("this slot is already taken")
+      
+    
+   }
+  
 
   //checkwin()
   game.checkWin(game.board);
 
-  //switchturn()
-  game.switchTurn(game.currentPlayer);
 
-  // gameOver()
-  game.isGameOver();
-
-    return game.printBoard();
  
+    return game.printBoard();
    
 }
 
