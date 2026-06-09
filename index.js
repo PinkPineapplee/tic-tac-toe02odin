@@ -122,6 +122,7 @@ function playGame(turn, userInput){
 
 const scoreBoard = {
   print : console.log(` Player One | Player Two  \n
+     -------------------
   ${playerOne.score}        |        ${playerTwo.score}
     `)
 }
