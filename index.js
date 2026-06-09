@@ -150,9 +150,11 @@ function reset(){
   let win = game.checkWin;
   if(win === "X"){ 
     playerOne.score++ 
-    
+    scoreBoard.print;
   }else if (win = "O"){
     playerTwo.score++
-    
+    scoreBoard.print;
+  }else{
+    console.log("nobody wins this round!")
   }
  }
