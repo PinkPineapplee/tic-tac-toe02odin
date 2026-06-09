@@ -70,22 +70,23 @@ const game = {
          }
          else{
           let tie = false;
-          const findNull = array.find((element) => {
-            if ( element === null){
+          const findNull = array.find(element => element === null);
+            if ( findNull === null){
+              game.switchTurn()
                console.log(` player ${this.currentPlayer}` + ",what will you play next")
             } else{
               console.log("nobody wins this round");
               this.isGameOver();
             }
-          });
-         }   
+          };
+            
   return winner;
   },
 
   isGameOver: function(){
    
-      console.log("gameOver")
-      reset()
+      console.log("gameOver!!!")
+      reset();
       
   }
                  
@@ -127,7 +128,7 @@ const scoreBoard = {
 
 
 function reset(){
-  game.active = false;
+  return game.active = false;
   game.board = [null,null,null,
                 null,null,null,
                 null,null,null];
