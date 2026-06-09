@@ -69,14 +69,16 @@ const game = {
           console.log("player two wins this round")
          }
          else{
-          let tie = false;
+         
           const findNull = array.find(element => element === null);
+
             if ( findNull === null){
-              game.switchTurn(game.currentPlayer)
-               console.log(` player ${this.currentPlayer}` + ",what will you play next")
+             
+               console.log("The game progress ...")
+               return findNull
             } else{
-              console.log("nobody wins this round");
-              this.isGameOver();
+              console.log("All the game slots are full! it is a tie.");
+            
             }
           };
             
@@ -110,7 +112,7 @@ function playGame(turn, userInput){
   game.checkWin(game.board);
 
   //switchturn()
-  game.switchTurn(turn);
+  game.switchTurn(game.currentPlayer);
 
   // gameOver()
   game.isGameOver();
