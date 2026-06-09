@@ -39,8 +39,8 @@ const game = {
   },
 
   switchTurn: function(currentTurn){
-                 currentTurn === playerOne.marker ? playerTwo.marker:playerOne.marker;
-                         console.log("The current player is ", currentTurn)},
+                 currentTurn === playerOne.marker ? currentTurn = playerTwo.marker: currentTurn = playerOne.marker;
+                         console.log("The current player is ", currentTurn )},
 
   checkWin: function(array){
       if((array[0] === "X" && array[1] === "X" && array[2] === "X") ||
@@ -129,9 +129,9 @@ function playGame(turn, userInput){
 }
 
 const scoreBoard = {
-  print : console.log(` Player One | Player Two  \n
-     -------------------
-  ${playerOne.score}        |        ${playerTwo.score}
+  print : console.log(`Player One | Player Two 
+  -------------------
+${playerOne.score}        |        ${playerTwo.score}
     `)
 }
 
