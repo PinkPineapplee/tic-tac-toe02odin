@@ -1,26 +1,38 @@
 
 const boxes = document.querySelectorAll(".box");
 const startBtn = document.querySelector("button");
-
+let number= 0
  //make UI board
 const container= document.querySelector(".container");
 for (let i = 1; i <= 9; i++){
   const div = document.createElement("div");
   div.className = "box";
+  div.id = i;
   container.appendChild(div);
+ 
 }
 
 console.log("Game Start!!!");
 
-function Player(id,marker){
+
+const letterX = document.createElement("span");
+letterX.textContent = "X";
+letterX.classList.add("x","marker");
+
+const letterO = document.createElement("span");
+letterO.textContent = "O";
+letterO.classList.add("o","marker");
+
+
+function Player(id,marker,ui){
    this.id = id;
    this.marker = marker;
    this.score = 0;
+   this.ui = ui;
  };
   
- const playerOne = new Player(1, "X");
- const playerTwo = new Player(2, "O");
-
+ const playerOne = new Player(1, "X", letterX);
+ const playerTwo = new Player(2, "O", letterO);
 
 
 const game = {
@@ -43,7 +55,22 @@ const game = {
                     -------------------
                     ${game.board[6]} | ${game.board[7]} | ${game.board[8]}
                   `);
+         
+                boxes.forEach(box => { 
+                     box.textContent = game.board[number(box.id) - 1];
+                     box.addEventListener("click",(e)=>{ 
+                      let pick = Number(e.target.id);
+                        number = pick -1; 
+                    })
+                    return number;
+                   })
+                   
+                    
+                   
+                  
+    return number  
   },
+
 
   switchTurn: function(currentTurn){
                  currentTurn === playerOne.marker ? currentTurn = playerTwo.marker: currentTurn = playerOne.marker;
@@ -101,9 +128,7 @@ const game = {
       console.log("gameOver!!!")
       reset();
       
-  }
-                 
-
+  }                
  }
 game.printBoard();
 
@@ -120,6 +145,7 @@ function playGame(turn, userInput){
    //write a condition to not overwrite values on the second round of game.
    if (game.board[userInput] === null){
     game.board[userInput] = turn;
+    container[userInput].textContent = turn;
    }else{
     console.log("this slot is already taken")
       
@@ -165,3 +191,9 @@ function reset(){
     console.log("nobody wins this round!")
   }
  }
+
+
+ startBtn.addEventListener("click", ()=>{
+
+      playGame(game.currentPlayer, game.printBoard())
+ })

@@ -78,9 +78,9 @@ header{
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  /* user-select:none; */
-  /* animation: pop .18s cubic-bezier(.2,.9,.3,1); */
-  /* transition: transform .12s ease, box-shadow .12s ease, background .12s ease; */
+   user-select:none; 
+   animation: pop .18s cubic-bezier(.2,.9,.3,1); 
+   transition: transform .12s ease, box-shadow .12s ease, background .12s ease; 
   outline: none;
   --sh: 0 6px 14px rgba(2,6,23,0.45);
   box-shadow: var(--sh);
