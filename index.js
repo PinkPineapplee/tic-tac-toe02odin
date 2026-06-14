@@ -72,10 +72,15 @@ const game = {
   },
 
 
-  switchTurn: function(currentTurn){
+  switchTurn: function(currentTurn,currentLetter){
                  currentTurn === playerOne.marker ? currentTurn = playerTwo.marker: currentTurn = playerOne.marker;
                  this.currentPlayer = currentTurn;
-                         console.log("The current player is ", currentTurn )},
+                         console.log("The current player is ", currentTurn )
+                       
+                         //change the ui in board
+                         currentLetter === letterX ? currentLetter = letterO : currentLetter = letterX;
+                        
+                        },
 
   checkWin: function(array){
       if((array[0] === "X" && array[1] === "X" && array[2] === "X") ||
