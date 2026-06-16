@@ -2,7 +2,7 @@
 const boxes = document.querySelectorAll(".box");
 const startBtn = document.querySelector("button");
 const commentBar = document.createElement("modal");
-let number= 0
+
 let isClicked= false;
 
 
@@ -54,6 +54,7 @@ const game = {
  
 
   printBoard: function(){
+    let number ;
                 console.log(`
                     ${game.board[0]} | ${game.board[1]} | ${game.board[2]}
                     -------------------
@@ -67,10 +68,11 @@ const game = {
                      box.addEventListener("click",(e)=>{ 
                      
                       let pick = Number(e.target.id);
+                      console.log("Picked box id =", pick);
                        isClicked = true;
-                        number = pick -1; 
+                       number = pick - 1; 
                     })
-                    return number;
+                   
                    })
                    
                     
@@ -83,12 +85,12 @@ const game = {
   switchTurn: function(currentTurn,currentLetter){
                  currentTurn === playerOne.marker ? currentTurn = playerTwo.marker: currentTurn = playerOne.marker;
                  this.currentPlayer = currentTurn;
-                         console.log("The current player is ", currentTurn )
+                 console.log("The current player is ", currentTurn )
                        
-                         //change the currentPlayers ui in board
-                         currentLetter === letterX ? currentLetter = letterO : currentLetter = letterX;
-                         this.piece = currentLetter;
-                        
+                //change the currentPlayers ui in board
+                currentLetter === letterX ? currentLetter = letterO : currentLetter = letterX;
+                this.piece = currentLetter;
+                console.log( "and he plays with ", currentLetter.textContent)
                         },
 
   checkWin: function(array){
@@ -168,7 +170,7 @@ function playGame(turn, userInput){
    boxes.forEach(box => {
     if(isClicked === true){
        box.appendChild(game.piece)
-       box.classList.add(game.piece)
+       box.classList.add(game.piece.textContent)
       }
     return  
 })
