@@ -1,7 +1,10 @@
 
 const boxes = document.querySelectorAll(".box");
 const startBtn = document.querySelector("button");
+const commentBar = document.createElement("modal");
 let number= 0
+
+
  //make UI board
 const container= document.querySelector(".container");
 for (let i = 1; i <= 9; i++){
@@ -14,7 +17,7 @@ for (let i = 1; i <= 9; i++){
 
 console.log("Game Start!!!");
 
-
+// make UI markers
 const letterX = document.createElement("span");
 letterX.textContent = "X";
 letterX.classList.add("x","marker");
@@ -24,6 +27,7 @@ letterO.textContent = "O";
 letterO.classList.add("o","marker");
 
 
+// make player constructor
 function Player(id,marker,ui){
    this.id = id;
    this.marker = marker;
@@ -39,6 +43,7 @@ const game = {
 
   active : false,
   currentPlayer: playerOne.marker,
+  currentLetter: letterX,
   winner: "",
 
   board : [null,null,null,
@@ -77,8 +82,9 @@ const game = {
                  this.currentPlayer = currentTurn;
                          console.log("The current player is ", currentTurn )
                        
-                         //change the ui in board
+                         //change the currentPlayers ui in board
                          currentLetter === letterX ? currentLetter = letterO : currentLetter = letterX;
+                         this.currentLetter = currentLetter;
                         
                         },
 
@@ -116,7 +122,7 @@ const game = {
              
                console.log("game is in progress ...")
               //switchturn()
-              this.switchTurn(game.currentPlayer);
+              this.switchTurn(game.currentPlayer, letterX);
             } else{
               console.log("All the game slots are full! it is a tie.");
             // gameOver()
@@ -152,20 +158,15 @@ function playGame(turn, userInput){
     game.board[userInput] = turn;
     container[userInput].textContent = turn;
    }else{
-    console.log("this slot is already taken")
-      
-    
+    console.log("this slot is already taken") 
    }
   
-
   //checkwin()
   game.checkWin(game.board);
-
-
- 
     return game.printBoard();
    
 }
+
 
 const scoreBoard = {
   print : console.log(`Player One | Player Two 
