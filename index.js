@@ -3,6 +3,7 @@ const boxes = document.querySelectorAll(".box");
 const startBtn = document.querySelector("button");
 const commentBar = document.createElement("modal");
 let number= 0
+let isClicked= false;
 
 
  //make UI board
@@ -20,11 +21,11 @@ console.log("Game Start!!!");
 // make UI markers
 const letterX = document.createElement("span");
 letterX.textContent = "X";
-letterX.classList.add("x","marker");
+letterX.classList.add("mark", "x");
 
 const letterO = document.createElement("span");
 letterO.textContent = "O";
-letterO.classList.add("o","marker");
+letterO.classList.add("mark", "o");
 
 
 // make player constructor
@@ -43,7 +44,7 @@ const game = {
 
   active : false,
   currentPlayer: playerOne.marker,
-  currentLetter: letterX,
+  piece: letterX,
   winner: "",
 
   board : [null,null,null,
@@ -64,7 +65,9 @@ const game = {
                 boxes.forEach(box => { 
                      box.textContent = game.board[number(box.id) - 1];
                      box.addEventListener("click",(e)=>{ 
+                     
                       let pick = Number(e.target.id);
+                       isClicked = true;
                         number = pick -1; 
                     })
                     return number;
@@ -84,7 +87,7 @@ const game = {
                        
                          //change the currentPlayers ui in board
                          currentLetter === letterX ? currentLetter = letterO : currentLetter = letterX;
-                         this.currentLetter = currentLetter;
+                         this.piece = currentLetter;
                         
                         },
 
@@ -153,14 +156,23 @@ function playGame(turn, userInput){
 
   //push player.maker into empty slot
   console.log("pick a number from 0 to 8" , userInput);
+
    //write a condition to not overwrite values on the second round of game.
    if (game.board[userInput] === null){
     game.board[userInput] = turn;
-    container[userInput].textContent = turn;
+   
    }else{
     console.log("this slot is already taken") 
    }
   
+   boxes.forEach(box => {
+    if(isClicked === true){
+       box.appendChild(game.piece)
+       box.classList.add(game.piece)
+      }
+    return  
+})
+
   //checkwin()
   game.checkWin(game.board);
     return game.printBoard();
@@ -176,7 +188,7 @@ ${playerOne.score}        |        ${playerTwo.score}
 }
 
 function reset(){
-  return game.active = false;
+  game.active = false;
   game.board = [null,null,null,
                 null,null,null,
                 null,null,null];

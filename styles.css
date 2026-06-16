@@ -92,15 +92,18 @@ header{
 .box:focus{ box-shadow: 0 8px 20px rgba(124,92,255,0.18), 0 0 0 4px rgba(124,92,255,0.09) }
 
 /* X and O styles — apply classes 'x' or 'o' via JS */
-.box.x{ color: #ffd166; text-shadow: 0 3px 0 rgba(0,0,0,0.25) }
-.box.o{ color: #7be4ff; text-shadow: 0 3px 0 rgba(0,0,0,0.25) }
+.box.X{ color: #ffd166; text-shadow: 0 3px 0 rgba(0,0,0,0.25) }
+.box.O{ color: #7be4ff; text-shadow: 0 3px 0 rgba(0,0,0,0.25) }
 
-/*Smooth placement animation
+*Smooth placement animation
 .box .mark{
   transform-origin:center;
   display:inline-block;
   animation: pop .18s cubic-bezier(.2,.9,.3,1);
-}*/
+  height: 100px;
+  width: 30px;
+}
+
 button {
     background-color: rgb(4, 80, 28);
     background: linear-gradient(180deg, rgba(8, 104, 66, 0.4), rgba(4,80,28,0.5)); 
