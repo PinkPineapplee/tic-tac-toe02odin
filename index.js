@@ -5,7 +5,7 @@ const startBtn = document.querySelector("button");
 const commentBar = document.createElement("modal");
 
 let isClicked= false;
-
+let choice;
 
  //make UI board
 const container= document.querySelector(".container");
@@ -27,6 +27,8 @@ letterX.classList.add("mark", "x");
 const letterO = document.createElement("span");
 letterO.textContent = "O";
 letterO.classList.add("mark", "o");
+
+
 
 
 // make player constructor
@@ -54,7 +56,7 @@ const game = {
 
  
 
-  printBoard: function(num=0){
+  printBoard: function(){
     
                 console.log(`
                     ${game.board[0]} | ${game.board[1]} | ${game.board[2]}
@@ -65,19 +67,20 @@ const game = {
                   `);
          
                
-                     container.addEventListener("click",(event)=>{ 
-                      if(event.target.matches(".box")){
-                      let pick = Number(event.target.matches(".box").id);
-                      console.log("Picked box id =", pick);
-                       isClicked = true;
-                       num = pick - 1; 
-                   } })
-                   
-                  
-                                     
-    return num 
   },
+   chooseMove: function(callNum){
 
+                 container.addEventListener("click",(event)=>{ 
+                      if(event.target.matches(".box")){
+                          console.log(event.target.id)
+                          let num = Number(event.target.id) -  1;
+                          console.log("Picked box id =", num);
+                          isClicked = true;
+                          callNum(num);
+                       
+                       } 
+                        })
+   },
 
   switchTurn: function(currentTurn,currentLetter){
                  currentTurn === playerOne.marker ? currentTurn = playerTwo.marker: currentTurn = playerOne.marker;
@@ -102,6 +105,7 @@ const game = {
 
           winner = "X";
           console.log("player One wins this round")
+          //commentBar.showPopover("player One wins this round");
          }
          else if (
          (array[0] === "O" && array[1] === "O" && array[2] === "O") ||
@@ -114,19 +118,22 @@ const game = {
          (array[2] === "O" && array[4] === "O" && array[4] === "O")){
 
           winner = "O";
-          console.log("player two wins this round")
+          console.log("player two wins this round");
+          //commentBar.showPopover("Player two wins this round")
          }
          else{
          
           const findNull = array.find(element => element === null);
 
-            if ( findNull === null){
+            if (findNull === null){
              
                console.log("game is in progress ...")
+               //commentBar.showPopover("game is in progress ...")
               //switchturn()
               this.switchTurn(game.currentPlayer, letterX);
             } else{
               console.log("All the game slots are full! it is a tie.");
+              //commentBar.showPopover("All the game slots are full! it is a tie.")
             // gameOver()
               this.isGameOver();
             }
@@ -139,13 +146,26 @@ const game = {
   isGameOver: function(nul){
     
       console.log("gameOver!!!")
+      //commentBar.showPopover("gameOver!!!")
       reset();
       
   }                
  }
-game.printBoard();
+
+ startBtn.addEventListener("click", ()=>{
+   game.printBoard()
+    game.chooseMove(num =>{
+                      choice = num;
+                     console.log (choice+" printboard a number");
+                     playGame(game.currentPlayer, choice ,game.piece);
+}); 
+        
+ })
+
 
  
+
+
 
  
 function playGame(turn, userInput, div){
@@ -155,36 +175,34 @@ function playGame(turn, userInput, div){
 
   //push player.maker into empty slot
   console.log("pick a number from 0 to 8" , userInput);
+   //commentBar.showPopover("choose a tile!")
 
    //write a condition to not overwrite values on the second round of game.
    if (game.board[userInput] === null){
     game.board[userInput] = turn;
    
    }else{
-    console.log("this slot is already taken") 
+    console.log("this slot is already taken");
+     //commentBar.showPopover("this slot is already taken") 
    }
   boxes[userInput].textContent = div;
-  boxes[userInput].classList.add(div.textContent)
-//    boxes.forEach(box => {
-//     if(isClicked === true){
-//        box.appendChild(game.piece)
-//        box.classList.add(game.piece.textContent)
-//       }
-//     return  
-// })
+  boxes[userInput].classList.add(div.textContent);
 
   //checkwin()
   game.checkWin(game.board);
-    return game.printBoard();
+    return game.printBoard(), choice;
    
 }
 
 
-const scoreBoard = {
-  print : console.log(`Player One | Player Two 
+function scoreBoard(){
+   console.log(`Player One | Player Two 
   -------------------
 ${playerOne.score}        |        ${playerTwo.score}
     `)
+
+//commentBar.showPopover( `Player One : ${playerOne.score}| Player Two :  ${playerTwo.score}`) 
+  
 }
 
 function reset(){
@@ -201,17 +219,13 @@ function reset(){
   let win = game.checkWin;
   if(win === "X"){ 
     playerOne.score++ 
-    scoreBoard.print;
+    scoreBoard();
   }else if (win = "O"){
     playerTwo.score++
-    scoreBoard.print;
+    scoreBoard();
   }else{
     console.log("nobody wins this round!")
+     //commentBar.showPopover("gameOver!!!")
   }
  }
 
-
- startBtn.addEventListener("click", ()=>{
-
-      playGame(game.currentPlayer, game.printBoard(),game.piece)
- })
