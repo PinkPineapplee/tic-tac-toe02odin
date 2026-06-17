@@ -1,4 +1,5 @@
 
+
 const boxes = document.querySelectorAll(".box");
 const startBtn = document.querySelector("button");
 const commentBar = document.createElement("modal");
@@ -53,8 +54,8 @@ const game = {
 
  
 
-  printBoard: function(){
-    let number ;
+  printBoard: function(num=0){
+    
                 console.log(`
                     ${game.board[0]} | ${game.board[1]} | ${game.board[2]}
                     -------------------
@@ -63,22 +64,18 @@ const game = {
                     ${game.board[6]} | ${game.board[7]} | ${game.board[8]}
                   `);
          
-                boxes.forEach(box => { 
-                     box.textContent = game.board[number(box.id) - 1];
-                     box.addEventListener("click",(e)=>{ 
-                     
-                      let pick = Number(e.target.id);
+               
+                     container.addEventListener("click",(event)=>{ 
+                      if(event.target.matches(".box")){
+                      let pick = Number(event.target.matches(".box").id);
                       console.log("Picked box id =", pick);
                        isClicked = true;
-                       number = pick - 1; 
-                    })
-                   
-                   })
-                   
-                    
+                       num = pick - 1; 
+                   } })
                    
                   
-    return number  
+                                     
+    return num 
   },
 
 
@@ -151,7 +148,7 @@ game.printBoard();
  
 
  
-function playGame(turn, userInput){
+function playGame(turn, userInput, div){
 
    // set game.active to activate.
   game.active = true;
@@ -166,14 +163,15 @@ function playGame(turn, userInput){
    }else{
     console.log("this slot is already taken") 
    }
-  
-   boxes.forEach(box => {
-    if(isClicked === true){
-       box.appendChild(game.piece)
-       box.classList.add(game.piece.textContent)
-      }
-    return  
-})
+  boxes[userInput].textContent = div;
+  boxes[userInput].classList.add(div.textContent)
+//    boxes.forEach(box => {
+//     if(isClicked === true){
+//        box.appendChild(game.piece)
+//        box.classList.add(game.piece.textContent)
+//       }
+//     return  
+// })
 
   //checkwin()
   game.checkWin(game.board);
@@ -215,5 +213,5 @@ function reset(){
 
  startBtn.addEventListener("click", ()=>{
 
-      playGame(game.currentPlayer, game.printBoard())
+      playGame(game.currentPlayer, game.printBoard(),game.piece)
  })
