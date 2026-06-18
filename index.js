@@ -86,9 +86,7 @@ const game = {
                  currentTurn === playerOne.marker ? currentTurn = playerTwo.marker: currentTurn = playerOne.marker;
                  this.currentPlayer = currentTurn;
                  console.log("The current player is ", currentTurn )
-                 commentBar.textContent = "The current player is " + currentTurn ;
-                 commentBar.showModal()
-                 setTimeout(() => {commentBar.close()}, 2000)  
+                 
                  
                  
                 //change the currentPlayers ui in board
@@ -114,7 +112,10 @@ const game = {
          
           commentBar.textContent="player One wins this round";
           commentBar.showModal();
-          setTimeout(() => {commentBar.close()}, 2000)
+          setTimeout(() => {commentBar.close()}, 2000);
+          
+          // gameOver()
+              this.isGameOver();
           
          }
          else if (
@@ -131,7 +132,10 @@ const game = {
           console.log("player two wins this round");
           commentBar.textContent= "Player two wins this round";
           commentBar.showModal();
-          setTimeout(() => {commentBar.close()}, 2000)
+          setTimeout(() => {commentBar.close()}, 2000);
+         
+          // gameOver()
+              this.isGameOver();
           
          }
          else{
@@ -141,9 +145,7 @@ const game = {
             if (findNull === null){
              
                console.log("game is in progress ...")
-               commentBar.textContent= "game is in progress ...";
-                commentBar.showModal()
-                setTimeout(() => {commentBar.close()}, 2000)
+          
 
               //switchturn()
               this.switchTurn(game.currentPlayer, letterX);
@@ -161,23 +163,22 @@ const game = {
   return winner;
   },
 
-  isGameOver: function(nul){
+  isGameOver: function(){
     
       console.log("gameOver!!!")
-      commentBar.textContent= "gameOver!!!";
-       commentBar.showModal()
-      setTimeout(() => {commentBar.close()}, 2000)
+    
       reset();
       
   }                
  }
 
  startBtn.addEventListener("click", ()=>{
+  // set game.active to activate.
+  game.active = true;
    game.printBoard()
     game.chooseMove(num =>{
-                      choice = num;
-                     console.log (choice+" printboard a number");
-                     playGame(game.currentPlayer, choice ,game.piece);
+                    
+                     playGame(game.currentPlayer, num ,game.piece);
 }); 
         
  })
@@ -190,14 +191,11 @@ const game = {
  
 function playGame(turn, userInput, div){
 
-   // set game.active to activate.
-  game.active = true;
+ if (game.active === true){
 
   //push player.maker into empty slot
   console.log("pick a number from 0 to 8" , userInput);
-  commentBar.textContent= "choose a tile!"
-  commentBar.showModal()
-  setTimeout(() => {commentBar.close()}, 2000)
+  
    //write a condition to not overwrite values on the second round of game.
    if (game.board[userInput] === null){
     game.board[userInput] = turn;
@@ -213,7 +211,9 @@ function playGame(turn, userInput, div){
  
  
 
-    return game.printBoard(),  updateScoreBoard(game.checkWin(game.board));  
+    return game.printBoard(), game.checkWin(game.board);  
+    } 
+    return
 }
 
 
@@ -230,22 +230,13 @@ commentBar.textContent = `Player One : ${playerOne.score}| Player Two :  ${playe
 
 function reset(){
   game.active = false;
+  game.currentPlayer = playerOne.marker;
   game.board = [null,null,null,
                 null,null,null,
                 null,null,null];
    playerOne.score = 0;
    playerTwo.score = 0;
-
+   boxes.forEach(box => box.textContent = "");
 }
 
- function updateScoreBoard(win){
-  
-  if(win === "X"){ 
-    scoreBoard();
-  }else if (win = "O"){
-     scoreBoard();
-  }else{
-    console.log("scoreBoard unupdated!")
-  }
- }
-
+ 
