@@ -79,6 +79,16 @@ const game = {
                           callNum(num);
                        
                        } 
+                        });
+
+               container.addEventListener("dblclick", (event)=>{
+                       if (event.target.matches(".box")){
+                        isClicked = false;
+                    console.log("this slot is already taken");
+                    commentBar.textContent= "this slot is already taken";
+                    commentBar.showModal();
+                    setTimeout(() => {commentBar.close()}, 2000)
+   }
                         })
                      },
 
@@ -202,12 +212,6 @@ function playGame(turn, userInput, div){
     game.board[userInput] = turn;
     boxes[userInput].textContent = div;
     boxes[userInput].classList.add(div);
-   }else if ((game.board[userInput] === "X") ||
-             (game.board[userInput] === "O")){
-    console.log("this slot is already taken");
-    commentBar.textContent= "this slot is already taken";
-    commentBar.showModal();
-    setTimeout(() => {commentBar.close()}, 2000)
    }
   
 
@@ -229,14 +233,17 @@ commentBar.textContent = `Player One : ${playerOne.score}| Player Two :  ${playe
 }
 
 function reset(){
+ 
   game.active = false;
-  
+  game.currentPlayer= playerOne.marker;
+  game.piece = letterX.textContent;
+  game.winner = "";
   game.board = [null,null,null,
                 null,null,null,
                 null,null,null];
    playerOne.score = 0;
    playerTwo.score = 0;
-   isClicked = false;
+  
    boxes.forEach(box => box.textContent = "");
 }
 
