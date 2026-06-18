@@ -175,7 +175,7 @@ const game = {
  startBtn.addEventListener("click", ()=>{
   // set game.active to activate.
   game.active = true;
-   game.printBoard()
+   game.printBoard();
     game.chooseMove(num =>{
                     
                      playGame(game.currentPlayer, num ,game.piece);
@@ -198,18 +198,18 @@ function playGame(turn, userInput, div){
   
    //write a condition to not overwrite values on the second round of game.
    if (game.board[userInput] === null){
+
     game.board[userInput] = turn;
-   
-   }else{
+    boxes[userInput].textContent = div;
+    boxes[userInput].classList.add(div);
+   }else if ((game.board[userInput] === "X") ||
+             (game.board[userInput] === "O")){
     console.log("this slot is already taken");
     commentBar.textContent= "this slot is already taken";
     commentBar.showModal();
     setTimeout(() => {commentBar.close()}, 2000)
    }
-  boxes[userInput].textContent = div;
-  boxes[userInput].classList.add(div);
- 
- 
+  
 
     return game.printBoard(), game.checkWin(game.board);  
     } 
@@ -236,6 +236,7 @@ function reset(){
                 null,null,null];
    playerOne.score = 0;
    playerTwo.score = 0;
+   isClicked = false;
    boxes.forEach(box => box.textContent = "");
 }
 
