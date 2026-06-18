@@ -1,6 +1,6 @@
 
 
-const boxes = document.querySelectorAll(".box");
+
 const startBtn = document.querySelector("button");
 const commentBar = document.createElement("modal");
 
@@ -16,7 +16,7 @@ for (let i = 1; i <= 9; i++){
   container.appendChild(div);
  
 }
-
+const boxes = document.querySelectorAll(".box");
 console.log("Game Start!!!");
 
 // make UI markers
@@ -47,7 +47,7 @@ const game = {
 
   active : false,
   currentPlayer: playerOne.marker,
-  piece: letterX,
+  piece: letterX.textContent,
   winner: "",
 
   board : [null,null,null,
@@ -80,7 +80,7 @@ const game = {
                        
                        } 
                         })
-   },
+                     },
 
   switchTurn: function(currentTurn,currentLetter){
                  currentTurn === playerOne.marker ? currentTurn = playerTwo.marker: currentTurn = playerOne.marker;
@@ -88,9 +88,11 @@ const game = {
                  console.log("The current player is ", currentTurn )
                        
                 //change the currentPlayers ui in board
-                currentLetter === letterX ? currentLetter = letterO : currentLetter = letterX;
-                this.piece = currentLetter;
-                console.log( "and he plays with ", currentLetter.textContent)
+                if (currentTurn === "X"){
+                  this.piece = letterX.textContent;
+                }else{
+                  this.piece = letterO.textContent;
+                }
                         },
 
   checkWin: function(array){
@@ -186,12 +188,13 @@ function playGame(turn, userInput, div){
      //commentBar.showPopover("this slot is already taken") 
    }
   boxes[userInput].textContent = div;
-  boxes[userInput].classList.add(div.textContent);
+  boxes[userInput].classList.add(div);
 
   //checkwin()
   game.checkWin(game.board);
-    return game.printBoard(), choice;
-   
+
+
+    return game.printBoard(), choice;   
 }
 
 
