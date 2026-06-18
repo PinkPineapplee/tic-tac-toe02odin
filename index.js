@@ -230,7 +230,7 @@ commentBar.textContent = `Player One : ${playerOne.score}| Player Two :  ${playe
 
 function reset(){
   game.active = false;
-  game.currentPlayer = playerOne.marker;
+  
   game.board = [null,null,null,
                 null,null,null,
                 null,null,null];
