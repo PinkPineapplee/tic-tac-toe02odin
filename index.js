@@ -107,8 +107,8 @@ const game = {
          (array[1] === "X" && array[4] === "X" && array[7] === "X") ||
          (array[2] === "X" && array[5] === "X" && array[8] === "X") ||
          (array[0] === "X" && array[4] === "X" && array[8] === "X") ||
-         (array[2] === "X" && array[4] === "X" && array[4] === "X")){
-
+         (array[2] === "X" && array[4] === "X" && array[6] === "X")){
+           playerOne.score++ 
           winner = "X";
           console.log("player One wins this round")
          
@@ -125,13 +125,13 @@ const game = {
          (array[1] === "O" && array[4] === "O" && array[7] === "O") ||
          (array[2] === "O" && array[5] === "O" && array[8] === "O") ||
          (array[0] === "O" && array[4] === "O" && array[8] === "O") ||
-         (array[2] === "O" && array[4] === "O" && array[4] === "O")){
-
+         (array[2] === "O" && array[4] === "O" && array[6] === "O")){
+           playerTwo.score++ 
           winner = "O";
           console.log("player two wins this round");
           commentBar.textContent= "Player two wins this round";
           commentBar.showModal();
-          setTimeout(commentBar.close(), 5000);
+          setTimeout(() => {commentBar.close()}, 2000)
           
          }
          else{
@@ -210,12 +210,10 @@ function playGame(turn, userInput, div){
    }
   boxes[userInput].textContent = div;
   boxes[userInput].classList.add(div);
+ 
+ 
 
-  //checkwin()
-  game.checkWin(game.board);
- updateScoreBoard()
-
-    return game.printBoard(), choice;   
+    return game.printBoard(),  updateScoreBoard(game.checkWin(game.board));  
 }
 
 
@@ -240,19 +238,14 @@ function reset(){
 
 }
 
- function updateScoreBoard(){
-  let win = game.checkWin;
+ function updateScoreBoard(win){
+  
   if(win === "X"){ 
-    playerOne.score++ 
     scoreBoard();
   }else if (win = "O"){
-    playerTwo.score++
-    scoreBoard();
+     scoreBoard();
   }else{
-    console.log("nobody wins this round!")
-    commentBar.textContent= "gameOver!!!";
-    commentBar.showModal()
-    setTimeout(() => {commentBar.close()}, 2000)
+    console.log("scoreBoard unupdated!")
   }
  }
 
