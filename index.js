@@ -118,17 +118,8 @@ const game = {
          (array[2] === "X" && array[4] === "X" && array[6] === "X")){
            playerOne.score++ 
           winner = "X";
-          console.log("player One wins this round")
-         
-          commentBar.textContent="player One wins this round";
-          commentBar.showModal();
-          setTimeout(() => {commentBar.close()}, 2000);
           
-          // gameOver()
-              this.isGameOver();
-          
-         }
-         else if (
+         } else if (
          (array[0] === "O" && array[1] === "O" && array[2] === "O") ||
          (array[3] === "O" && array[4] === "O" && array[5] === "O") ||
          (array[6] === "O" && array[7] === "O" && array[8] === "O") ||
@@ -138,15 +129,7 @@ const game = {
          (array[0] === "O" && array[4] === "O" && array[8] === "O") ||
          (array[2] === "O" && array[4] === "O" && array[6] === "O")){
            playerTwo.score++ 
-          winner = "O";
-          console.log("player two wins this round");
-          commentBar.textContent= "Player two wins this round";
-          commentBar.showModal();
-          setTimeout(() => {commentBar.close()}, 2000);
-         
-          // gameOver()
-              this.isGameOver();
-          
+          winner = "O";         
          }
          else{
          
@@ -155,28 +138,40 @@ const game = {
             if (findNull === null){
              
                console.log("game is in progress ...")
-          
-
               //switchturn()
               this.switchTurn(game.currentPlayer, letterX);
             } else{
-              console.log("All the game slots are full! it is a tie.");
-              commentBar.textContent= "All the game slots are full! it is a tie."
-               commentBar.showModal()
-               setTimeout(() => {commentBar.close()}, 2000)
+              
             // gameOver()
               this.isGameOver();
             }
             winner = "null";
           };
             
-  return winner;
+  return this.isGameOver(winner);
   },
 
-  isGameOver: function(){
+  isGameOver: function(winner){
     
       console.log("gameOver!!!")
-    
+     if(winner === "X"){
+       console.log("player One wins this round")
+         
+          commentBar.textContent="player One wins this round";
+          commentBar.showModal();
+          setTimeout(() => {commentBar.close()}, 2000);
+         
+     } else if(winner === "O"){
+        console.log("player two wins this round");
+          commentBar.textContent= "Player two wins this round";
+          commentBar.showModal();
+          setTimeout(() => {commentBar.close()}, 2000);
+     }else if (winner === "null"){
+               console.log("All the game slots are full! it is a tie.");
+              commentBar.textContent= "All the game slots are full! it is a tie."
+               commentBar.showModal()
+               setTimeout(() => {commentBar.close()}, 2000)
+     }
       reset();
       
   }                
