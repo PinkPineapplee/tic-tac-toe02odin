@@ -3,7 +3,8 @@
 
 const startBtn = document.querySelector("button");
 const commentBar = document.createElement("dialog");
-
+const body = document.querySelector("body");
+body.appendChild(commentBar);
 let isClicked= false;
 let choice;
 
@@ -107,9 +108,10 @@ const game = {
 
           winner = "X";
           console.log("player One wins this round")
+         
           commentBar.textContent="player One wins this round";
-          commentBar.showModal()
-          setTimeout(commentBar.close(), 5000)
+          commentBar.showModal();
+          setTimeout(commentBar.close(), 5000);
          }
          else if (
          (array[0] === "O" && array[1] === "O" && array[2] === "O") ||
@@ -124,8 +126,8 @@ const game = {
           winner = "O";
           console.log("player two wins this round");
           commentBar.textContent= "Player two wins this round";
-          commentBar.showModal()
-          setTimeout(commentBar.close(), 5000)
+          commentBar.showModal();
+          setTimeout(commentBar.close(), 5000);
          }
          else{
          

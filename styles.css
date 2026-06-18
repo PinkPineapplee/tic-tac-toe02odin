@@ -117,7 +117,7 @@ button {
 }
 
 button:hover{
-   background: linear-gradient(180deg, rgba(9, 113, 72, 0.4), rgba(4, 88, 31, 0.5)); 
+   background: linear-gradient(180deg, rgba(11, 122, 78, 0.4), rgba(4, 102, 35, 0.55)); 
 }
 footer{
     display: flex;
@@ -128,3 +128,9 @@ footer{
 
 }
 
+.message{
+  height: 10vh;
+  width: 80vw;
+  background-color: #081934;
+  border: 5px solid rgb(23, 63, 23);
+}
