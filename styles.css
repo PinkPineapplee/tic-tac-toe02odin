@@ -130,8 +130,10 @@ footer{
 
 .message{
   height: 10vh;
-  width: 80vw;
+  width: 40vw;
   background-color: #081934;
   border: 5px solid rgb(23, 63, 23);
   color: white;
+  position: relative;
+  bottom: 70%;
 }

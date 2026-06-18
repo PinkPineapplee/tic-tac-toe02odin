@@ -86,7 +86,11 @@ const game = {
                  currentTurn === playerOne.marker ? currentTurn = playerTwo.marker: currentTurn = playerOne.marker;
                  this.currentPlayer = currentTurn;
                  console.log("The current player is ", currentTurn )
-                       
+                 commentBar.textContent = "The current player is " + currentTurn ;
+                 commentBar.showModal()
+                 setTimeout(() => {commentBar.close()}, 2000)  
+                 
+                 
                 //change the currentPlayers ui in board
                 if (currentTurn === "X"){
                   this.piece = letterX.textContent;
@@ -111,6 +115,7 @@ const game = {
           commentBar.textContent="player One wins this round";
           commentBar.showModal();
           setTimeout(() => {commentBar.close()}, 2000)
+          
          }
          else if (
          (array[0] === "O" && array[1] === "O" && array[2] === "O") ||
@@ -127,6 +132,7 @@ const game = {
           commentBar.textContent= "Player two wins this round";
           commentBar.showModal();
           setTimeout(commentBar.close(), 5000);
+          
          }
          else{
          
@@ -207,7 +213,7 @@ function playGame(turn, userInput, div){
 
   //checkwin()
   game.checkWin(game.board);
-
+ updateScoreBoard()
 
     return game.printBoard(), choice;   
 }
@@ -219,8 +225,9 @@ function scoreBoard(){
 ${playerOne.score}        |        ${playerTwo.score}
     `)
 
-//commentBar.showPopover( `Player One : ${playerOne.score}| Player Two :  ${playerTwo.score}`) 
-  
+commentBar.textContent = `Player One : ${playerOne.score}| Player Two :  ${playerTwo.score}`; 
+ commentBar.showModal()
+    setTimeout(() => {commentBar.close()}, 4000) 
 }
 
 function reset(){
