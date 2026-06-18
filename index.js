@@ -29,8 +29,7 @@ const letterO = document.createElement("span");
 letterO.textContent = "O";
 letterO.classList.add("mark", "o");
 
-commentBar.classList.add("messege")
-
+commentBar.classList.add("message")
 
 // make player constructor
 function Player(id,marker,ui){
@@ -111,7 +110,7 @@ const game = {
          
           commentBar.textContent="player One wins this round";
           commentBar.showModal();
-          setTimeout(commentBar.close(), 5000);
+          setTimeout(() => {commentBar.close()}, 2000)
          }
          else if (
          (array[0] === "O" && array[1] === "O" && array[2] === "O") ||
@@ -138,7 +137,7 @@ const game = {
                console.log("game is in progress ...")
                commentBar.textContent= "game is in progress ...";
                 commentBar.showModal()
-                setTimeout(commentBar.close(), 2000)
+                setTimeout(() => {commentBar.close()}, 2000)
 
               //switchturn()
               this.switchTurn(game.currentPlayer, letterX);
@@ -146,7 +145,7 @@ const game = {
               console.log("All the game slots are full! it is a tie.");
               commentBar.textContent= "All the game slots are full! it is a tie."
                commentBar.showModal()
-               setTimeout(commentBar.close(), 5000)
+               setTimeout(() => {commentBar.close()}, 2000)
             // gameOver()
               this.isGameOver();
             }
@@ -161,7 +160,7 @@ const game = {
       console.log("gameOver!!!")
       commentBar.textContent= "gameOver!!!";
        commentBar.showModal()
-       setTimeout(commentBar.close(), 5000)
+      setTimeout(() => {commentBar.close()}, 2000)
       reset();
       
   }                
@@ -192,7 +191,7 @@ function playGame(turn, userInput, div){
   console.log("pick a number from 0 to 8" , userInput);
   commentBar.textContent= "choose a tile!"
   commentBar.showModal()
-  setTimeout(commentBar.close(), 5000);
+  setTimeout(() => {commentBar.close()}, 2000)
    //write a condition to not overwrite values on the second round of game.
    if (game.board[userInput] === null){
     game.board[userInput] = turn;
@@ -201,7 +200,7 @@ function playGame(turn, userInput, div){
     console.log("this slot is already taken");
     commentBar.textContent= "this slot is already taken";
     commentBar.showModal();
-    setTimeout(commentBar.close(), 5000) ;
+    setTimeout(() => {commentBar.close()}, 2000)
    }
   boxes[userInput].textContent = div;
   boxes[userInput].classList.add(div);
@@ -246,7 +245,7 @@ function reset(){
     console.log("nobody wins this round!")
     commentBar.textContent= "gameOver!!!";
     commentBar.showModal()
-    setTimeout(commentBar.close(), 5000)
+    setTimeout(() => {commentBar.close()}, 2000)
   }
  }
 
