@@ -28,7 +28,7 @@ const letterO = document.createElement("span");
 letterO.textContent = "O";
 letterO.classList.add("mark", "o");
 
-
+commentBar.classList.add("messege")
 
 
 // make player constructor
