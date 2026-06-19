@@ -100,11 +100,11 @@ const game = {
                  if (currentTurn === playerOne.marker && currentLetter === playerOne.ui){
                   this.currentPlayer = playerTwo.marker;
                   this.piece = playerTwo.ui;
-                  console.log("The current player is ", currentTurn )
+                  console.log("The current player is ", currentTurn, "and plays with ", currentLetter )
                  } else if(currentTurn === playerTwo.marker && currentLetter === playerTwo.ui){
                    this.currentPlayer = playerOne.marker;
                   this.piece = playerOne.ui;
-                  console.log("The current player is ", currentTurn )
+                  console.log("The current player is ", currentTurn, "and plays with ", currentLetter )
                  }
              
                  
@@ -162,7 +162,7 @@ const game = {
           
 
               //switchturn()
-              this.switchTurn(game.currentPlayer, playerOne.ui);
+              this.switchTurn(game.currentPlayer, game.piece);
             } else{
               console.log("All the game slots are full! it is a tie.");
               commentBar.textContent= "All the game slots are full! it is a tie."
@@ -213,11 +213,12 @@ function playGame(turn, userInput, div){
     boxes[userInput].textContent = div.textContent;
     boxes[userInput].classList.add(div.textContent);
    }
-  
+    game.checkWin(game.board);
+    game.printBoard();
 
-    return game.printBoard(), game.checkWin(game.board);  
+   
     } 
-    return
+  
 }
 
 
@@ -235,19 +236,25 @@ commentBar.textContent = `Player One : ${playerOne.score}| Player Two :  ${playe
 function reset(){
  
   game.active = false;
-  game.currentPlayer= playerOne.marker;
-  game.piece = playerOne.ui;
-  game.winner = "";
+
   game.board = [null,null,null,
                 null,null,null,
                 null,null,null];
+
    playerOne.score = 0;
    playerTwo.score = 0;
   
-   boxes.forEach(box => {box.textContent = "";
-    box.classList.remove("O","X")
-   });
+  //  boxes.forEach(box => {box.textContent = "";
+  //   box.classList.remove("O","X")
+  //  });
    
+   for (let i = 1; i <= 9; i++){
+  const div = document.createElement("div");
+  div.className = "box";
+  div.id = i;
+  container.appendChild(div);
+ 
+}
 }
 
  
