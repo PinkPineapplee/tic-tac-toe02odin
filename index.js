@@ -4,7 +4,10 @@
 const startBtn = document.querySelector("button");
 const commentBar = document.createElement("dialog");
 const body = document.querySelector("body");
+
 body.appendChild(commentBar);
+commentBar.classList.add("message");
+
 let isClicked= false;
 let choice;
 
@@ -17,6 +20,7 @@ for (let i = 1; i <= 9; i++){
   container.appendChild(div);
  
 }
+
 const boxes = document.querySelectorAll(".box");
 console.log("Game Start!!!");
 
@@ -29,7 +33,7 @@ const letterO = document.createElement("span");
 letterO.textContent = "O";
 letterO.classList.add("mark", "o");
 
-commentBar.classList.add("message")
+
 
 // make player constructor
 function Player(id,marker,ui){
@@ -47,7 +51,7 @@ const game = {
 
   active : false,
   currentPlayer: playerOne.marker,
-  piece: letterX.textContent,
+  piece: playerOne.ui,
   winner: "",
 
   board : [null,null,null,
@@ -81,30 +85,30 @@ const game = {
                        } 
                         });
 
-               container.addEventListener("dblclick", (event)=>{
-                       if (event.target.matches(".box")){
-                        isClicked = false;
-                    console.log("this slot is already taken");
-                    commentBar.textContent= "this slot is already taken";
-                    commentBar.showModal();
-                    setTimeout(() => {commentBar.close()}, 2000)
-   }
-                        })
+  //              container.addEventListener("dblclick", (event)=>{
+  //                      if (event.target.matches(".box")){
+  //                       isClicked = false;
+  //                   console.log("this slot is already taken");
+  //                   commentBar.textContent= "this slot is already taken";
+  //                   commentBar.showModal();
+  //                   setTimeout(() => {commentBar.close()}, 2000)
+  //  }
+  //                       })
                      },
 
-  switchTurn: function(currentTurn,currentLetter){
-                 currentTurn === playerOne.marker ? currentTurn = playerTwo.marker: currentTurn = playerOne.marker;
-                 this.currentPlayer = currentTurn;
-                 console.log("The current player is ", currentTurn )
+  switchTurn: function(currentTurn , currentLetter){
+                 if (currentTurn === playerOne.marker && currentLetter === playerOne.ui){
+                  this.currentPlayer = playerTwo.marker;
+                  this.piece = playerTwo.ui;
+                  console.log("The current player is ", currentTurn )
+                 } else if(currentTurn === playerTwo.marker && currentLetter === playerTwo.ui){
+                   this.currentPlayer = playerOne.marker;
+                  this.piece = playerOne.ui;
+                  console.log("The current player is ", currentTurn )
+                 }
+             
                  
-                 
-                 
-                //change the currentPlayers ui in board
-                if (currentTurn === "X"){
-                  this.piece = letterX.textContent;
-                }else{
-                  this.piece = letterO.textContent;
-                }
+          
                         },
 
   checkWin: function(array){
@@ -116,10 +120,19 @@ const game = {
          (array[2] === "X" && array[5] === "X" && array[8] === "X") ||
          (array[0] === "X" && array[4] === "X" && array[8] === "X") ||
          (array[2] === "X" && array[4] === "X" && array[6] === "X")){
-           playerOne.score++ 
+          playerOne.score++ 
           winner = "X";
+          console.log("player One wins this round")
+         
+          commentBar.textContent="player One wins this round";
+          commentBar.showModal();
+          setTimeout(() => {commentBar.close()}, 2000);
           
-         } else if (
+          // gameOver()
+          this.isGameOver();
+          
+         }
+         else if (
          (array[0] === "O" && array[1] === "O" && array[2] === "O") ||
          (array[3] === "O" && array[4] === "O" && array[5] === "O") ||
          (array[6] === "O" && array[7] === "O" && array[8] === "O") ||
@@ -128,8 +141,16 @@ const game = {
          (array[2] === "O" && array[5] === "O" && array[8] === "O") ||
          (array[0] === "O" && array[4] === "O" && array[8] === "O") ||
          (array[2] === "O" && array[4] === "O" && array[6] === "O")){
-           playerTwo.score++ 
-          winner = "O";         
+          playerTwo.score++ 
+          winner = "O";
+          console.log("player two wins this round");
+          commentBar.textContent= "Player two wins this round";
+          commentBar.showModal();
+          setTimeout(() => {commentBar.close()}, 2000);
+         
+          // gameOver()
+              this.isGameOver();
+          
          }
          else{
          
@@ -138,40 +159,29 @@ const game = {
             if (findNull === null){
              
                console.log("game is in progress ...")
+          
+
               //switchturn()
-              this.switchTurn(game.currentPlayer, letterX);
+              this.switchTurn(game.currentPlayer, playerOne.ui);
             } else{
-              
+              console.log("All the game slots are full! it is a tie.");
+              commentBar.textContent= "All the game slots are full! it is a tie."
+              commentBar.showModal();
+              setTimeout(() => {commentBar.close()}, 2000);
+
             // gameOver()
               this.isGameOver();
             }
             winner = "null";
           };
             
-  return this.isGameOver(winner);
+  return winner;
   },
 
-  isGameOver: function(winner){
+  isGameOver: function(){
     
       console.log("gameOver!!!")
-     if(winner === "X"){
-       console.log("player One wins this round")
-         
-          commentBar.textContent="player One wins this round";
-          commentBar.showModal();
-          setTimeout(() => {commentBar.close()}, 2000);
-         
-     } else if(winner === "O"){
-        console.log("player two wins this round");
-          commentBar.textContent= "Player two wins this round";
-          commentBar.showModal();
-          setTimeout(() => {commentBar.close()}, 2000);
-     }else if (winner === "null"){
-               console.log("All the game slots are full! it is a tie.");
-              commentBar.textContent= "All the game slots are full! it is a tie."
-               commentBar.showModal()
-               setTimeout(() => {commentBar.close()}, 2000)
-     }
+    
       reset();
       
   }                
@@ -189,11 +199,6 @@ const game = {
  })
 
 
- 
-
-
-
- 
 function playGame(turn, userInput, div){
 
  if (game.active === true){
@@ -205,8 +210,8 @@ function playGame(turn, userInput, div){
    if (game.board[userInput] === null){
 
     game.board[userInput] = turn;
-    boxes[userInput].textContent = div;
-    boxes[userInput].classList.add(div);
+    boxes[userInput].textContent = div.textContent;
+    boxes[userInput].classList.add(div.textContent);
    }
   
 
@@ -231,7 +236,7 @@ function reset(){
  
   game.active = false;
   game.currentPlayer= playerOne.marker;
-  game.piece = letterX.textContent;
+  game.piece = playerOne.ui;
   game.winner = "";
   game.board = [null,null,null,
                 null,null,null,
@@ -239,7 +244,10 @@ function reset(){
    playerOne.score = 0;
    playerTwo.score = 0;
   
-   boxes.forEach(box => box.textContent = "");
+   boxes.forEach(box => {box.textContent = "";
+    box.classList.remove("O","X")
+   });
+   
 }
 
  
