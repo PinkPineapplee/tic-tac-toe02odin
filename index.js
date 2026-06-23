@@ -162,7 +162,7 @@ const game = {
           
 
               //switchturn()
-              this.switchTurn(game.currentPlayer, game.piece);
+             // this.switchTurn(game.currentPlayer, game.piece);
             } else{
               console.log("All the game slots are full! it is a tie.");
               commentBar.textContent= "All the game slots are full! it is a tie."
@@ -212,6 +212,7 @@ function playGame(turn, userInput, div){
     game.board[userInput] = turn;
     boxes[userInput].textContent = div.textContent;
     boxes[userInput].classList.add(div.textContent);
+    game.switchTurn(game.currentPlayer, game.piece);
    }
     game.checkWin(game.board);
     game.printBoard();
@@ -237,6 +238,11 @@ function reset(){
  
   game.active = false;
 
+  game.currentPlayer= playerOne.marker;
+  game.piece= playerOne.ui;
+  game.winner= "";
+
+
   game.board = [null,null,null,
                 null,null,null,
                 null,null,null];
@@ -244,17 +250,12 @@ function reset(){
    playerOne.score = 0;
    playerTwo.score = 0;
   
-  //  boxes.forEach(box => {box.textContent = "";
-  //   box.classList.remove("O","X")
-  //  });
-   
-   for (let i = 1; i <= 9; i++){
-  const div = document.createElement("div");
-  div.className = "box";
-  div.id = i;
-  container.appendChild(div);
- 
-}
+    boxes.forEach(box => {box.textContent = "";
+     box.classList.remove("O","X")
+    });
+
+  
+
 }
 
  
