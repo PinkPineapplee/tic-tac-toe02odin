@@ -180,6 +180,7 @@ const game = {
 
   isGameOver: function(){
     
+     scoreBoard()
       console.log("gameOver!!!")
     
       reset();
@@ -213,13 +214,19 @@ function playGame(turn, userInput, div){
     boxes[userInput].textContent = div.textContent;
     boxes[userInput].classList.add(div.textContent);
     game.switchTurn(game.currentPlayer, game.piece);
-   }
     game.checkWin(game.board);
     game.printBoard();
 
+   }else if (game.board[userInput] !== null){
+
+          console.log("this slot is already taken");
+          commentBar.textContent= "this slot is already taken";
+          commentBar.showModal();
+          setTimeout(() => {commentBar.close()}, 2000);
+          
+   }
    
-    } 
-  
+    }  
 }
 
 
@@ -255,7 +262,8 @@ function reset(){
     });
 
   
-
 }
+
+
 
  
