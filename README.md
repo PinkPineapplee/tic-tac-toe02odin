@@ -1,2 +1,43 @@
 # tic-tac-toe02odin
 A Simple tictactoe game
+
+set prompt variable to stor node js. parsing
+set boxes to call DOM of .box element
+set startBtn to call DOM. button
+
+make game object
+  board stores an empty array for nine spaces
+  active property to set game to deactive
+  currentPlayer to store current playing player.marker.
+  printboard method to print board on console.
+  displayBoard method to display game in the DOM.
+  switch turns
+
+
+make a Player constructor
+  this. id
+  this. marker
+  this. score
+
+make new player objects for player ONe and player playerTwo
+
+make function to playGame.
+  set game.active to activate.
+  push player.maker into empty slot
+  printboard()
+  checkwin()
+  switchturn()
+  gameOver()
+  
+
+make function for winning conditions
+  display winner message
+
+build console first.
+take of ui design
+
+make function to reset game
+
+
+
+When the start btn is clicked. playGAme for one instance/round.  
