@@ -224,10 +224,10 @@ function playGame(turn, userInput, div){
   //         commentBar.showModal();
   //         setTimeout(() => {commentBar.close()}, 2000);
           
-    }
+    };
    
-    }  
-}
+    };  
+};
 
 
 function scoreBoard(){
