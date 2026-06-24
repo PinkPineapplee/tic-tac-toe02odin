@@ -217,14 +217,14 @@ function playGame(turn, userInput, div){
     game.checkWin(game.board);
     game.printBoard();
 
-   }else if (game.board[userInput] !== null){
+  //  }else if (game.board[userInput] !== null){
 
-          console.log("this slot is already taken");
-          commentBar.textContent= "this slot is already taken";
-          commentBar.showModal();
-          setTimeout(() => {commentBar.close()}, 2000);
+  //         console.log("this slot is already taken");
+  //         commentBar.textContent= "this slot is already taken";
+  //         commentBar.showModal();
+  //         setTimeout(() => {commentBar.close()}, 2000);
           
-   }
+    }
    
     }  
 }
